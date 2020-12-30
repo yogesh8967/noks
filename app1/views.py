@@ -171,7 +171,7 @@ def customer(request):
 def Menu(request, Category):
 	Dish_C = Dish.objects.filter(Dish_Type = Category)
 	category = {'Category': Dish_C, 'Category_name': Category}
-	return render(request, 'app1/Menu.html',category)
+	return render(request, 'app1/menu.html',category)
 
 @login_required(login_url='login')
 def Menu_cart(request, Category, usr, menu_cart):
@@ -186,7 +186,7 @@ def Menu_cart(request, Category, usr, menu_cart):
 			Cart.objects.create(User_ID=person, Dish_id = Dish_C, Quantity = 1)
 		return HttpResponseRedirect('/cart/' + request.user.username + '/')
 	category = {'Category': Dish_C}
-	return render(request, 'app1/Menu.html',category)
+	return render(request, 'app1/menu.html',category)
 
 @login_required(login_url='login')
 def home_cart(request, dishname):
@@ -201,7 +201,7 @@ def home_cart(request, dishname):
 			Cart.objects.create(User_ID=person, Dish_id = Dish_C, Quantity = 1)
 		return redirect('home')
 	category = {'Category': Dish_C}
-	return render(request, 'app1/Menu.html',category)
+	return render(request, 'app1/menu.html',category)
 
 @login_required(login_url='login')
 def profile_page(request, usr):
